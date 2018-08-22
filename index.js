@@ -1,7 +1,8 @@
 'use strict';
 const raven = require('raven');
 
-module.exports.log = function(options, tags, message) {
+let configed = false;
+module.exports.init = function(options) {
   raven.config(options.dsn, {
     name: options.name,
     release: options.release,
@@ -10,6 +11,14 @@ module.exports.log = function(options, tags, message) {
     tags: options.tags,
     extra: options.extra
   });
+  configed = true;
+};
+
+module.exports.log = function(options, tags, message) {
+  //for backwards compat
+  if (!configed) {
+    module.exports.init(options);
+  }
 
   const tagsObj = tags.reduce((obj, t) => {
     obj[t] = true;
