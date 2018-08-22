@@ -1,7 +1,7 @@
 {
-  "name": "logr-slack",
-  "version": "1.2.0",
-  "description": "plugin for logr that posts tags and log message to slack",
+  "name": "logr-sentry",
+  "version": "1.0.0",
+  "description": "plugin for logr that sends logs to sentry",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
@@ -9,21 +9,21 @@
   },
   "keywords": [
     "logr",
-    "slack"
+    "sentry"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/firstandthird/logr-slack.git"
+    "url": "git+https://github.com/firstandthird/logr-sentry.git"
   },
   "author": "First+Third",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/firstandthird/logr-slack/issues"
+    "url": "https://github.com/firstandthird/logr-sentry/issues"
   },
   "eslintConfig": {
     "extends": "firstandthird"
   },
-  "homepage": "https://github.com/firstandthird/logr-slack#readme",
+  "homepage": "https://github.com/firstandthird/logr-sentry#readme",
   "devDependencies": {
     "eslint": "^4.12.1",
     "eslint-config-firstandthird": "^4.1.1",
