@@ -2,12 +2,20 @@
 const raven = require('raven');
 
 module.exports.log = function(options, tags, message) {
-  raven.config(options.dsn, options.client);
-  const baseTags = options.tags ? Object.assign({}, options.tags) : {};
+  raven.config(options.dsn, {
+    name: options.name,
+    release: options.release,
+    environment: options.environment,
+    logger: options.logger || 'logr',
+    tags: options.tags,
+    extra: options.extra
+  });
+
   const tagsObj = tags.reduce((obj, t) => {
     obj[t] = true;
     return obj;
-  }, baseTags);
+  }, {});
+
   let level = 'info';
   if (tagsObj.error) {
     level = 'error';
@@ -19,8 +27,6 @@ module.exports.log = function(options, tags, message) {
   }
   raven.captureMessage(message, {
     level,
-    tags: tagsObj,
-    extra: options.extra,
-    environment: options.environment
+    tags: tagsObj
   });
 };

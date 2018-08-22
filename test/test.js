@@ -11,6 +11,7 @@ test('can load the plugin ', (t) => {
         options: {
           dsn: process.env.SENTRY_DSN,
           environment: 'test',
+          logger: 'logr-test',
           tags: {
             env: 'production'
           },
