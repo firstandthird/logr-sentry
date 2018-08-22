@@ -1,6 +1,6 @@
 {
   "name": "logr-sentry",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "plugin for logr that sends logs to sentry",
   "main": "index.js",
   "scripts": {
