@@ -10,6 +10,7 @@ test('can load the plugin ', (t) => {
         reporter: logrSentry,
         options: {
           dsn: process.env.SENTRY_DSN,
+          environment: 'test',
           tags: {
             env: 'production'
           },

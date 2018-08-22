@@ -20,6 +20,7 @@ module.exports.log = function(options, tags, message) {
   raven.captureMessage(message, {
     level,
     tags: tagsObj,
-    extra: options.extra
+    extra: options.extra,
+    environment: options.environment
   });
 };
