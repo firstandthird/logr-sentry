@@ -14,7 +14,7 @@ module.exports.init = function(options) {
   configed = true;
 };
 
-module.exports.log = function(options, tags, message) {
+module.exports.log = function(options, tags, data) {
   //for backwards compat
   if (!configed) {
     module.exports.init(options);
@@ -34,8 +34,19 @@ module.exports.log = function(options, tags, message) {
     level = 'warning';
     delete tagsObj.warning;
   }
+
+  let message = '';
+  let extra = null;
+  if (typeof data === 'object' && data.message) {
+    message = data.message;
+    extra = data;
+  } else {
+    message = data;
+  }
+
   raven.captureMessage(message, {
     level,
-    tags: tagsObj
+    tags: tagsObj,
+    extra
   });
 };

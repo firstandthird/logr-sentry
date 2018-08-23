@@ -22,9 +22,10 @@ test('can load the plugin ', (t) => {
       }
     }
   });
-  log(['error', 'taga', 'tagb'], { some: 'error' });
-  log(['warning', 'taga', 'tagb'], { some: 'warning' });
+  log(['error', 'taga', 'tagb'], { message: 'this is an error', some: 'error' });
+  log(['warning', 'taga', 'tagb'], { message: 'this is a warning', some: 'warning' });
   log(['taga', 'tagb'], { some: 'info' });
+  log(['taga', 'tagb'], 'some string');
   t.end();
 });
 
